@@ -6,7 +6,7 @@
 #    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 11:46:39 by hopham            #+#    #+#              #
-#    Updated: 2020/01/02 15:13:39 by hopham           ###   ########.fr        #
+#    Updated: 2020/01/08 14:07:50 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ FUNCTIONS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_strupcase.c ft_isupper.c \
 	 ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c \
 	 ft_strrchr.c  ft_strsplit.c ft_strstr.c ft_countwords.c ft_strndup.c \
 	 ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_strsplitset.c \
-	 ft_lstadd_end.c ft_lstcount.c ft_lstrev.c ft_get_next_line.c \
+	 ft_lstadd_end.c ft_lstcount.c ft_lstrev.c get_next_line.c \
 	 ft_ftoa.c ft_itoa_base.c \
 
 C_FILES = $(addprefix $(SRC), $(FUNCTIONS))
