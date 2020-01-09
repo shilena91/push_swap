@@ -6,7 +6,7 @@
 #    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 10:56:43 by hopham            #+#    #+#              #
-#    Updated: 2020/01/08 16:52:40 by hopham           ###   ########.fr        #
+#    Updated: 2020/01/09 17:23:33 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ NAME_P = push_swap
 
 LIB = ./libft/libft.a
 LIB_FODER = ./libft/
-FLAGS = -Wextra -Werror -Wall -g
+FLAGS = -Wextra -Werror -Wall
 
 SRCS_C = ./srcs/checker/
 
 SHARE_FOLDER = ./srcs/shared_functions/
 
-FUNC_C = main.c
-SHARE_FUNCS = build.c
+FUNC_C = main.c run_commands_input.c
+SHARE_FUNCS = build.c run_commands.c
 
 SHARE_FILES = $(addprefix $(SHARE_FOLDER), $(SHARE_FUNCS))
 FILES_C = $(addprefix $(SRCS_C), $(FUNC_C))
@@ -37,8 +37,8 @@ library:
 	make -C $(LIB_FODER)
 
 $(NAME_C): all
-	gcc $(FLAGS) $(INCLUDES) -c $(FILES_C) $(SHARE_FILES)
-	gcc $(FLAGS) -o $(NAME_C) $(INCLUDES) $(CH_OBJ) $(LIB) 
+	gcc $(FLAGS) $(INCLUDES) -c $(FILES_C) $(SHARE_FILES) -g
+	gcc $(FLAGS) -o $(NAME_C) $(INCLUDES) $(CH_OBJ) $(LIB) -g 
 
 clean:
 	rm -rf $(CH_OBJ)

@@ -6,19 +6,19 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 14:29:02 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/08 18:49:21 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/09 18:06:14 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_error(void)
+void			ft_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	exit(1);
+	exit(-1);
 }
 
-int		check_only_num(int ac, char **av)
+static int		check_only_num(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -40,77 +40,76 @@ int		check_only_num(int ac, char **av)
 	return (1);
 }
 
-int		check_doubles(t_stack *a, int ac)
+static t_lstnum	*add_num_to_struct(char *str)
 {
-	t_lstnum *tmp;
-	int		i;
-	int		j;
-	int		k;
-	int		arr[ac + 1];
-
-	tmp = a->head;
-	i = 0;
-	while (tmp)
-	{
-		arr[i++] = tmp->n;
-		tmp = tmp->next;
-	}
-	j = -1;
-	while (j++ < i)
-	{
-		k = j;
-		while (++k < i)
-			if (arr[j] == arr[k])
-				return (0);
-	}
-	return (1);
-}
-
-void	lst_addend_fast(t_lstnum **back, char *str)
-{
-	t_lstnum	*tmp;
+	t_lstnum	*new_num;
 	int			num;
 
 	num = ft_atoi(str);
 	if (num > INT_MAX || num < INT_MIN)
-		ft_error();
-	if (*back == NULL)
-		return ;
-	tmp = malloc(sizeof(t_lstnum));
-	tmp->n = (int)num;
-	tmp->next = NULL;
-	(*back)->next = tmp;
-	tmp->prev = *back;
-	*back = tmp;
+		return (NULL);
+	new_num = (t_lstnum*)ft_memalloc(sizeof(t_lstnum));
+	new_num->n = num;
+	new_num->next = NULL;
+	return (new_num);
 }
 
-void	build_stack(t_stack *a, t_stack *b, int ac, char **av)
+static void		lst_addend(t_lstnum **backtrack, t_lstnum *new_num)
 {
-	int			i;
 	t_lstnum	*tmp;
 
-	i = 1;
-	if (!check_only_num(ac, av) || !(a->head = malloc(sizeof(t_lstnum))))
+	if (*backtrack == NULL)
+		return ;
+	tmp = *backtrack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_num;
+	tmp = tmp->next;
+	tmp->prev = *backtrack;
+	*backtrack = tmp;
+}
+
+static int		check_double(t_stack *a)
+{
+	t_lstnum	*tmp1;
+	t_lstnum	*tmp2;
+	int			num;
+
+	tmp1 = a->head;
+	while (tmp1)
+	{
+		num = tmp1->n;
+		tmp2 = tmp1;
+		while (tmp2->next)
+		{
+			if (num == tmp2->next->n)
+				return (0);
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (1);
+}
+
+void			build_stack(t_stack *a, t_stack *b, int ac, char **av)
+{
+	int			i;
+	t_lstnum	*new_num;
+
+	if (!check_only_num(ac, av) || !(a->head = ft_memalloc(sizeof(t_lstnum))))
 		ft_error();
-	a->head->n = ft_atoi(av[i]);
-	i++;
-	a->head->prev = NULL;
+	a->head->n = ft_atoi(av[1]);
 	a->end = a->head;
+	i = 2;
 	while (i < ac)
 	{
-		lst_addend_fast(av[i], &a->end);
+		if (!(new_num = add_num_to_struct(av[i])))
+			ft_error();
+		lst_addend(&a->end, new_num);
 		i++;
 	}
-	if (!check_doubles(a, ac))
-	{
-		while (a->head)
-		{
-			tmp = a->head;
-			a->head = a->head->next;
-			free(tmp);
-		}
+	if (!(check_double(a)))
 		ft_error();
-	}
 	b->head = NULL;
 	b->end = NULL;
 }

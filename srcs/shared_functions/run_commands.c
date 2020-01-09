@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/08 16:48:35 by hopham           ###   ########.fr       */
+/*   Created: 2020/01/09 16:56:53 by hopham            #+#    #+#             */
+/*   Updated: 2020/01/09 18:22:40 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "push_swap.h"
 
-# include "libft.h"
-# include "ft_printf.h"
-# include "get_next_line.h"
-
-typedef struct	s_lstnum
+void	swap(t_lstnum **stack)
 {
-	int				n;
-	struct s_lstnum	*next;
-	struct s_lstnum	*prev;
-}				t_lstnum;
-
-typedef struct	s_stack
-{
-	t_lstnum	*head;
-	t_lstnum	*end;
-}				t_stack;
-
-
-void	ft_error(void);
-void	build_stack(t_stack *a, t_stack *b, char **av, int ac);
-
-#endif
+	t_lstnum	*tmp;
+	
+	if (!(*stack) || !(*stack)->next)
+		return ;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tmp->next = (*stack)->next;
+	tmp->prev = *stack;
+	(*stack)->next = tmp;;
+	(*stack)->prev = NULL;
+}
