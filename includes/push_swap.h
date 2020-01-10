@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/09 18:56:47 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/10 17:28:32 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ void	ft_error(void);
 void	build_stack(t_stack *a, t_stack *b, int ac, char **av);
 void	swapper(t_stack *a, t_stack *b, char *line);
 void	swap(t_lstnum **stack);
+void	push(t_lstnum **from, t_lstnum **to, t_lstnum **to_end);
+void	ft_rotate(t_lstnum **head, t_lstnum **end);
+void	rotater(t_stack *a, t_stack *b, char *line);
 
 #endif

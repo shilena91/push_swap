@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:40:05 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/09 18:53:09 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/10 17:26:33 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,18 @@ void	swapper(t_stack *a, t_stack *b, char *line)
 		swap(&a->head);
 		swap(&b->head);
 	}
-	while (a->head)
+}
+
+void	rotater(t_stack *a, t_stack *b, char *line)
+{
+	if (!ft_strcmp(line, "ra"))
+		ft_rotate(&a->head, &a->end);
+	else if (!ft_strcmp(line, "rb"))
+		ft_rotate(&b->head, &b->end);
+	else
 	{
-		ft_printf("%i ", a->head->n);
-		a->head = a->head->next;
+		ft_rotate(&a->head, &a->end);
+		ft_rotate(&b->head, &b->end);
 	}
+	
 }
