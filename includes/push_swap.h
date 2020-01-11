@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/10 17:28:32 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/11 12:36:01 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void	swap(t_lstnum **stack);
 void	push(t_lstnum **from, t_lstnum **to, t_lstnum **to_end);
 void	ft_rotate(t_lstnum **head, t_lstnum **end);
 void	rotater(t_stack *a, t_stack *b, char *line);
+void	ft_reverse_rotate(t_lstnum **head, t_lstnum **end);
+void	reverse_rotater(t_stack *a, t_stack *b, char *line);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:09:19 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/10 17:23:33 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/11 12:35:19 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,7 @@ int	main(int ac, char **av)
 	t_stack	a;
 	t_stack	b;
 	char	*line;
-	/*
-	int	fd;
-	int	bytes;
-	char	buf[1000];
 
-	fd = 0;
-	while ((bytes = read(0, buf, 1)))
-	{
-		
-	}
-	*/
 	build_stack(&a, &b, ac, av);
 	while (get_next_line(0, &line) > 0)
 	{
@@ -39,6 +29,10 @@ int	main(int ac, char **av)
 			push(&a.head, &b.head, &b.end);
 		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
 			rotater(&a, &b, line);
+		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
+			reverse_rotater(&a, &b, line);
+		else
+			ft_error();
 	}
 	return (0);
 }

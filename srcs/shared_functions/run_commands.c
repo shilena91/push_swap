@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:56:53 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/10 17:39:29 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/11 12:35:48 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,16 @@ void	ft_rotate(t_lstnum **head, t_lstnum **end)
 	(*head)->prev = NULL;
 	*end = (*end)->next;
 	(*end)->next = NULL;
+}
+
+void	ft_reverse_rotate(t_lstnum **head, t_lstnum **end)
+{
+	if (*head == NULL || *end == NULL)
+		return ;
+	(*head)->prev = *end;
+	(*end)->next = *head;
+	*head = *end;
+	(*end) = (*end)->prev;
+	(*end)->next = NULL;
+	(*head)->prev = NULL;
 }
