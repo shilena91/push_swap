@@ -6,11 +6,25 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:09:19 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/11 12:35:19 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/12 23:05:51 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_a(t_lstnum **a)
+{
+	t_lstnum *tmp;
+
+	tmp = *a;
+	while (tmp->next)
+	{
+		if (tmp->next->n < tmp->n)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 int	main(int ac, char **av)
 {
@@ -33,6 +47,11 @@ int	main(int ac, char **av)
 			reverse_rotater(&a, &b, line);
 		else
 			ft_error();
+		free(line);
 	}
+	if (check_a(&a.head) == 1)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	return (0);
 }
