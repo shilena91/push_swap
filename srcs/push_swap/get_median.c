@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:13:07 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/13 13:31:31 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/14 18:14:56 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_count(t_stack *s)
 int	get_true_median(t_stack *a)
 {
 	t_lstnum	*tmp;
-	int			arr[a->ac + 1];
+	int			arr[a->ac - 1];
 	int			i;
 	int			j[2];
 
@@ -44,6 +44,7 @@ int	get_true_median(t_stack *a)
 		tmp = tmp->next;
 	}
 	j[0] = -1;
+	/*
 	while (j[0]++ < i)
 	{
 		j[1] = j[0];
@@ -55,5 +56,7 @@ int	get_true_median(t_stack *a)
 				arr[j[0]] = arr[a->ac];
 			}
 	}
+	*/
+	sort_int_tab_des(arr, i);
 	return (arr[i / 2]);
 }

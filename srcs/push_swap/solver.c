@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:08:52 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/13 18:23:22 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/14 17:27:53 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		split_a(t_stack *a, t_stack *b, t_list **solution)
 	tmp[0] = '\0';
 	count = get_count(a);
 	median = NO_MED;
-	if (count <= 11 && count > 2)
+	if (count > 2 && count <= 11)
 		median = special_median_a(a);
 	else if (count > 11)
 		median = get_true_median(a);

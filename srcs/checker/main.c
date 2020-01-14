@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:09:19 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/12 23:05:51 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/14 18:20:12 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int ac, char **av)
 	t_stack	a;
 	t_stack	b;
 	char	*line;
-
+	if (ac < 2)
+		return (0);
 	build_stack(&a, &b, ac, av);
 	while (get_next_line(0, &line) > 0)
 	{

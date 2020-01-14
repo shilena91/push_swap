@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:22:05 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/13 13:31:02 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/14 18:16:32 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ long	special_median_a(t_stack *a)
 		tmp = tmp->next;
 	}
 	j[0] = -1;
+	/*
 	while (j[0]++ < i)
 	{
 		j[1] = j[0];
@@ -38,10 +39,12 @@ long	special_median_a(t_stack *a)
 				arr[j[0]] = arr[11];
 			}
 	}
+	*/
+	sort_int_tab_des(arr, i);
 	return ((!a->p[a->top]) ? arr[3] : arr[2]);
 }
 
-int		deal_higher_a(t_stack *a, char *cmnds, int med, int *t_rewind)
+int		deal_higher_a(t_stack *a, char *solution, int med, int *t_rewind)
 {
 	int			skips;
 	t_lstnum	*tmp;
@@ -59,12 +62,12 @@ int		deal_higher_a(t_stack *a, char *cmnds, int med, int *t_rewind)
 	while (skips--)
 	{
 		ft_rotate(&a->head, &a->end);
-		ft_strcat(cmnds, "ra\n");
+		ft_strcat(solution, "ra\n");
 	}
 	return (1);
 }
 
-void	split_round_median_a(t_stack *a, t_stack *b, int med, char *cmnds)
+void	split_round_median_a(t_stack *a, t_stack *b, int med, char *solution)
 {
 	int		rewind;
 
@@ -76,15 +79,15 @@ void	split_round_median_a(t_stack *a, t_stack *b, int med, char *cmnds)
 		if (a->head->n <= med)
 		{
 			push(&a->head, &b->head, &b->end);
-			ft_strcat(cmnds, "pb\n");
+			ft_strcat(solution, "pb\n");
 		}
-		else if (!(deal_higher_a(a, cmnds, med, &rewind)))
+		else if (!(deal_higher_a(a, solution, med, &rewind)))
 			break ;
 	}
 	while (a->p[a->top] && --rewind >= 0)
 	{
 		ft_reverse_rotate(&a->head, &a->end);
-		ft_strcat(cmnds, "rra\n");
+		ft_strcat(solution, "rra\n");
 	}
 }
 
