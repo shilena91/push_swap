@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:05:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/13 13:41:25 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/15 11:37:21 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	main(int ac, char **av)
 	t_stack a;
 	t_stack	b;
 	t_list	*solution;
-
+	
+	if (ac < 2)
+		return (0);
 	build_stack(&a, &b, ac, av);
 	if (!(a.p = malloc(sizeof(t_lstnum*) * ac)) ||
 	!(b.p = malloc(sizeof(t_lstnum*) * ac)))
