@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/13 13:39:27 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:05:40 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,9 @@ void	ft_rotate(t_lstnum **head, t_lstnum **end);
 void	rotater(t_stack *a, t_stack *b, char *line);
 void	ft_reverse_rotate(t_lstnum **head, t_lstnum **end);
 void	reverse_rotater(t_stack *a, t_stack *b, char *line);
-int		get_count(t_stack *s);
+
+int		get_count(t_stack *stack);
 int		get_true_median(t_stack *a);
-t_list		*ft_lstnew_str(char *content);
-t_list		*solver(t_stack *a, t_stack *b);
-void	sort_a(t_stack *a, int count, char *tmp);
-long	special_median_a(t_stack *a);
-long	special_median_b(t_stack *b);
-void	split_round_median_a(t_stack *a, t_stack *b, int med, char *cmnds);
-void	split_round_median_b(t_stack *a, t_stack *b, int med, char *cmnds);
-void	sort_b(t_stack *b, int count, char *tmp);
+void	split_around_median_a(t_stack *a, t_stack *b, int med, char *solution);
 
 #endif

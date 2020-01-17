@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:17:25 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/14 18:10:26 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/17 14:05:33 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef	struct		s_list
 }					t_list;
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
+t_list				*ft_lstnew_str(char *content);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);

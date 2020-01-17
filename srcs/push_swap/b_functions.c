@@ -5,58 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 13:17:36 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/13 13:30:32 by hopham           ###   ########.fr       */
+/*   Created: 2020/01/17 18:26:21 by hopham            #+#    #+#             */
+/*   Updated: 2020/01/17 18:59:55 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	special_median_b(t_stack *b)
+int		get_special_median_b(t_stack *b)
 {
 	t_lstnum	*tmp;
-	int			arr[7];
 	int			i;
-	int			j[2];
+	int			arr[7];
 
 	tmp = b->head;
 	i = 0;
 	while (tmp != b->p[b->top])
 	{
-		arr[i++] = tmp->n;
+		arr[i] = tmp->n;
+		i++;
 		tmp = tmp->next;
 	}
-	j[0] = -1;
-	while (j[0]++ < i)
-	{
-		j[1] = j[0];
-		while (++j[1] < i)
-			if (arr[j[0]] > arr[j[1]])
-			{
-				arr[6] = arr[j[1]];
-				arr[j[1]] = arr[j[0]];
-				arr[j[0]] = arr[6];
-			}
-	}
-	return ((!b->p[b->top]) ? arr[2] : arr[1]);
+	sort_int_tab(arr, i);
+	if (b->p[b->top])
+		return (arr[1]);
+	return (arr[2]);
 }
 
-int		deal_lower_b(t_stack *b, char *solution, int med, int count[2])
+int		deal_lower_nb_b(t_stack *b, char *solution, int med)
 {
-	int			skips;
 	t_lstnum	*tmp;
+	int			i;
 
-	skips = 0;
 	tmp = b->head;
+	i = 0;
 	while (tmp != b->p[b->top] && tmp->n <= med)
 	{
-		skips++;
+		i++;
 		tmp = tmp->next;
 	}
 	if (tmp == b->p[b->top])
 		return (0);
-	count[0] += skips;
-	while (skips--)
+	while (i > 0)
 	{
 		ft_rotate(&b->head, &b->end);
 		ft_strcat(solution, "rb\n");
@@ -64,49 +54,38 @@ int		deal_lower_b(t_stack *b, char *solution, int med, int count[2])
 	return (1);
 }
 
-void	split_round_median_b(t_stack *a, t_stack *b, int med, char *cmnds)
+void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution)
 {
-	int		count[2];
-
-	count[0] = 0;
-	count[1] = 0;
 	while (b->head != b->p[b->top])
 	{
 		if (b->head->n > med)
 		{
 			push(&b->head, &a->head, &a->end);
-			ft_strcat(cmnds, "pa\n");
+			ft_strcat(solution, "pa\n");
 		}
-		else if (!(deal_lower_b(b, cmnds, med, count)))
+		else if (deal_lower_nb_b(b, solution, med) == 0)
 			break ;
-	}
-	while (b->p[b->top] && --count[0] >= 0)
-	{
-		ft_reverse_rotate(&b->head, &b->end);
-		ft_strcat(cmnds, "rrb\n");
 	}
 }
 
-void	three_caseb(t_stack *a, char *tmp)
+void	three_case_nb_b(t_stack *b, char *tmp)
 {
-	while (!(a->head->next->n > a->head->next->next->n
-	&& a->head->n > a->head->next->next->n))
+	while (b->head->next->n < b->head->next->next->n && b->head->n < b->head->next->next->n)
 	{
-		if (a->head->next->n < a->head->next->next->n
-		&& a->head->next->n < a->head->n)
+		if (b->head->next->n < b->head->next->next->n && b->head->next->n < b->head->n)
 		{
-			ft_reverse_rotate(&a->head, &a->end);
+			ft_reverse_rotate(&b->head, &b->end);
 			ft_strcat(tmp, "rrb\n");
 		}
 		else
 		{
-			ft_rotate(&a->head, &a->end);
+			ft_rotate(&b->head, &b->end);
 			ft_strcat(tmp, "rb\n");
 		}
 	}
-	if (!(a->head->next->n > a->head->n))
+	if (b->head->n >= b->head->next->n)
 		return ;
-	swap(&a->head);
+	swap(&b->head);
 	ft_strcat(tmp, "sb\n");
 }
 
@@ -118,12 +97,12 @@ void	sort_b(t_stack *b, int count, char *tmp)
 		return ;
 	if (count == 2)
 	{
-		if (b->head->next && b->head->next->n > b->head->n)
+		if (b->head->n < b->head->next)
 		{
-			swap(&b->head);
+			swap(b->head);
 			ft_strcat(tmp, "sb\n");
 		}
 		return ;
 	}
-	three_caseb(b, tmp);
+	three_case_nb_b(b, tmp);
 }
