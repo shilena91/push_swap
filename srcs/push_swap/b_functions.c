@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_functions.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:26:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/17 18:59:55 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/19 21:53:08 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution)
 
 void	three_case_nb_b(t_stack *b, char *tmp)
 {
-	while (b->head->next->n < b->head->next->next->n && b->head->n < b->head->next->next->n)
+	while (!(b->head->next->n > b->head->next->next->n
+			&& b->head->n > b->head->next->next->n))
 	{
-		if (b->head->next->n < b->head->next->next->n && b->head->next->n < b->head->n)
+		if (b->head->next->n < b->head->next->next->n
+			&& b->head->next->n < b->head->n)
 		{
 			ft_reverse_rotate(&b->head, &b->end);
 			ft_strcat(tmp, "rrb\n");
@@ -97,9 +99,9 @@ void	sort_b(t_stack *b, int count, char *tmp)
 		return ;
 	if (count == 2)
 	{
-		if (b->head->n < b->head->next)
+		if (b->head->n < b->head->next->n)
 		{
-			swap(b->head);
+			swap(&b->head);
 			ft_strcat(tmp, "sb\n");
 		}
 		return ;

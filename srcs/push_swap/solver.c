@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:11 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/17 19:01:26 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:16:21 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		split_a_to_b(t_stack *a, t_stack *b, t_list **solution)
 	if (count > 11)
 		median = get_true_median(a);
 	else if (count > 2 && count <= 11)
-		median = special_median_a(a);
+		median = get_special_median_a(a);
 	if (median != NO_MED)
 		split_around_median_a(a, b, (int)median, tmp);
 	else
@@ -51,6 +51,21 @@ int		sorted(t_stack *a)
 		tmp = tmp->next;
 	}
 	return (1);
+}
+
+void	push_b(t_stack *b, t_stack *a, int count, char *tmp)
+{
+	int	i;
+
+	i = 0;
+	if (count == -1)
+		count = 3;
+	while (i < count)
+	{
+		push(&b->head, &a->head, &b->end);
+		ft_strcat(tmp, "pa\n");
+		i++;
+	}
 }
 
 void	b_to_a(t_stack *a, t_stack *b, t_list **solution)

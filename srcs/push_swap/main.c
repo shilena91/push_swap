@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:05:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/17 14:11:49 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:17:01 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	b.top = 0;
 	a.p[a.top] = NULL;
 	b.p[a.top] = NULL;
-	solution = solver(&a, &b);
+	solution = solve(&a, &b);
 	while (solution)
 	{
 		ft_putstr((char*)solution->content);

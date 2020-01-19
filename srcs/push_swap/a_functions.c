@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_functions.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:52:23 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/17 18:16:47 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/19 21:27:04 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int		get_special_median_a(t_stack *a)
 
 void	three_nb_case(t_stack *a, char *solution)
 {
-	while (a->head->next->n > a->head->next->next->n
-			&& a->head->n > a->head->next->next->n)
+	while (!(a->head->next->n < a->head->next->next->n
+			&& a->head->n < a->head->next->next->n))
 		{
 			if (a->head->next->n > a->head->next->next->n
 				&& a->head->next->n > a->head->n)
@@ -63,7 +63,7 @@ void	sort_a(t_stack *a, int count, char *solution)
 	{
 		if (a->head->n > a->head->next->n)
 		{
-			swap(a->head);
+			swap(&a->head);
 			ft_strcat(solution, "sa");
 		}
 		return ;
@@ -78,7 +78,7 @@ int		deal_higher_nb_a(t_stack *a, char *solution, int med)
 
 	tmp = a->head;
 	i = 0;
-	while (tmp != a->p[a->top] && tmp->next > med)
+	while (tmp != a->p[a->top] && tmp->n > med)
 	{
 		i++;
 		tmp = tmp->next;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
+#    By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 10:56:43 by hopham            #+#    #+#              #
-#    Updated: 2020/01/17 19:06:54 by hopham           ###   ########.fr        #
+#    Updated: 2020/01/19 14:01:58 by HoangPham        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS_P = ./srcs/push_swap/
 SHARE_FOLDER = ./srcs/shared_functions/
 
 FUNC_C = main.c run_commands_input.c
-FUNC_P = main.c get_median.c solver.c a_functions b_functions
+FUNC_P = main.c get_median.c solver.c a_functions.c b_functions.c 
 SHARE_FUNCS = build.c run_commands.c
 
 SHARE_FILES = $(addprefix $(SHARE_FOLDER), $(SHARE_FUNCS))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_median.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:45:22 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/17 15:50:12 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:05:24 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	get_true_median(t_stack *a)
 	i = 0;
 	while (tmp != a->p[a->top])
 	{
-		arr[i] = tmp->next;
+		arr[i] = tmp->n;
 		i++;
 		tmp = tmp->next;
 	}
