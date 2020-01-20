@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_functions.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:26:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/19 21:53:08 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/20 09:51:38 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		deal_lower_nb_b(t_stack *b, char *solution, int med)
 	{
 		ft_rotate(&b->head, &b->end);
 		ft_strcat(solution, "rb\n");
+		i--;
 	}
 	return (1);
 }

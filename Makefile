@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+         #
+#    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 10:56:43 by hopham            #+#    #+#              #
-#    Updated: 2020/01/19 14:01:58 by HoangPham        ###   ########.fr        #
+#    Updated: 2020/01/20 15:57:22 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SHARE_FOLDER = ./srcs/shared_functions/
 
 FUNC_C = main.c run_commands_input.c
 FUNC_P = main.c get_median.c solver.c a_functions.c b_functions.c 
-SHARE_FUNCS = build.c run_commands.c
+SHARE_FUNCS = build.c run_commands.c parse_nb_from_str.c
 
 SHARE_FILES = $(addprefix $(SHARE_FOLDER), $(SHARE_FUNCS))
 FILES_C = $(addprefix $(SRCS_C), $(FUNC_C))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:11 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/19 14:16:21 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/20 18:05:56 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	push_b(t_stack *b, t_stack *a, int count, char *tmp)
 		count = 3;
 	while (i < count)
 	{
-		push(&b->head, &a->head, &b->end);
+		push(&b->head, &a->head, &a->end);
 		ft_strcat(tmp, "pa\n");
 		i++;
 	}
@@ -96,10 +96,15 @@ t_list	*solve(t_stack *a, t_stack *b)
 	t_list	*solution;
 
 	solution = ft_lstnew("\0", 1);
-	while (!sorted(a))
+	while (!sorted(a) || b->head)
 	{
-		while (split_a_to_b(a, b, &solution) == 0)
-			;
+		if (!sorted(a))
+		{
+			while (split_a_to_b(a, b, &solution) == 0)
+				;
+		}
+		else
+			a->p[++(a->top)] = a->head;
 		b_to_a(a, b, &solution);
 	}
 	return (solution);

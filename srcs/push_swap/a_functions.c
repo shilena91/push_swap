@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_functions.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:52:23 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/19 21:27:04 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/20 10:46:32 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void	sort_a(t_stack *a, int count, char *solution)
 		if (a->head->n > a->head->next->n)
 		{
 			swap(&a->head);
-			ft_strcat(solution, "sa");
+			ft_strcat(solution, "sa\n");
 		}
 		return ;
 	}
 	three_nb_case(a, solution);
 }
 
-int		deal_higher_nb_a(t_stack *a, char *solution, int med)
+int		deal_higher_nb_a(t_stack *a, char *solution, int med, int *rewind)
 {
 	t_lstnum	*tmp;
 	int			i;
@@ -85,6 +85,7 @@ int		deal_higher_nb_a(t_stack *a, char *solution, int med)
 	}
 	if (tmp == a->p[a->top])
 		return (0);
+	*rewind += i;
 	while (i > 0)
 	{
 		ft_rotate(&a->head, &a->end);
@@ -96,6 +97,9 @@ int		deal_higher_nb_a(t_stack *a, char *solution, int med)
 
 void	split_around_median_a(t_stack *a, t_stack *b, int med, char *solution)
 {
+	int	rewind;
+
+	rewind = 0;
 	if (b->head)
 		b->p[++(b->top)] = b->head;
 	while (a->head != a->p[a->top])
@@ -105,7 +109,13 @@ void	split_around_median_a(t_stack *a, t_stack *b, int med, char *solution)
 			push(&a->head, &b->head, &b->end);
 			ft_strcat(solution, "pb\n");
 		}
-		else if (deal_higher_nb_a(a, solution, med) == 0)
+		else if (deal_higher_nb_a(a, solution, med, &rewind) == 0)
 			break ;
+	}
+	while (a->p[a->top] && rewind > 0)
+	{
+		ft_reverse_rotate(&a->head, &a->end);
+		ft_strcat(solution, "rra\n");
+		rewind--;
 	}
 }

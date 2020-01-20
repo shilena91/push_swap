@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/19 14:09:16 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/20 15:57:01 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct	s_stack
 	int			top;
 	int			ac;
 }				t_stack;
+
+void	parse_nb_from_first_str(t_stack *a, char *str);
+void	parse_nb_from_second_str(t_stack *a, char *str);
 
 void	ft_error(void);
 void	build_stack(t_stack *a, t_stack *b, int ac, char **av);
