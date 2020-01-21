@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:26:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/20 09:51:38 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/21 16:10:20 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		get_special_median_b(t_stack *b)
 	return (arr[2]);
 }
 
-int		deal_lower_nb_b(t_stack *b, char *solution, int med)
+int		deal_lower_nb_b(t_stack *b, char *solution, int med, int *rewind)
 {
 	t_lstnum	*tmp;
 	int			i;
@@ -46,6 +46,7 @@ int		deal_lower_nb_b(t_stack *b, char *solution, int med)
 	}
 	if (tmp == b->p[b->top])
 		return (0);
+	*rewind += i;
 	while (i > 0)
 	{
 		ft_rotate(&b->head, &b->end);
@@ -57,6 +58,9 @@ int		deal_lower_nb_b(t_stack *b, char *solution, int med)
 
 void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution)
 {
+	int	rewind;
+
+	rewind = 0;
 	while (b->head != b->p[b->top])
 	{
 		if (b->head->n > med)
@@ -64,8 +68,14 @@ void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution)
 			push(&b->head, &a->head, &a->end);
 			ft_strcat(solution, "pa\n");
 		}
-		else if (deal_lower_nb_b(b, solution, med) == 0)
+		else if (deal_lower_nb_b(b, solution, med, &rewind) == 0)
 			break ;
+	}
+	while (b->p[b->top] && rewind > 0)
+	{
+		ft_reverse_rotate(&b->head, &b->end);
+		ft_strcat(solution, "rrb\n");
+		rewind--;
 	}
 }
 

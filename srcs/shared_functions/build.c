@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 14:29:02 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/20 16:14:44 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:32:45 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int		check_double(t_stack *a)
 void			build_stack(t_stack *a, t_stack *b, int ac, char **av)
 {
 	int	i;
-	
+
 	a->head = ft_memalloc(sizeof(t_lstnum));
 	parse_nb_from_first_str(a, av[1]);
 	i = 2;

@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:52:23 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/20 10:46:32 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:35:32 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ void	three_nb_case(t_stack *a, char *solution)
 {
 	while (!(a->head->next->n < a->head->next->next->n
 			&& a->head->n < a->head->next->next->n))
+	{
+		if (a->head->next->n > a->head->next->next->n
+			&& a->head->next->n > a->head->n)
 		{
-			if (a->head->next->n > a->head->next->next->n
-				&& a->head->next->n > a->head->n)
-			{
-				ft_reverse_rotate(&a->head, &a->end);
-				ft_strcat(solution, "rra\n");
-			}
-			else
-			{
-				ft_rotate(&a->head, &a->end);
-				ft_strcat(solution, "ra\n");
-			}
+			ft_reverse_rotate(&a->head, &a->end);
+			ft_strcat(solution, "rra\n");
 		}
+		else
+		{
+			ft_rotate(&a->head, &a->end);
+			ft_strcat(solution, "ra\n");
+		}
+	}
 	if (a->head->n < a->head->next->n)
-			return ;
+		return ;
 	swap(&a->head);
 	ft_strcat(solution, "sa\n");
 }

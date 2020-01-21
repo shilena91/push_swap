@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:56:53 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/11 12:35:48 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/21 18:34:11 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	swap(t_lstnum **stack)
 {
 	t_lstnum	*tmp;
-	
+
 	if (!(*stack) || !(*stack)->next)
 		return ;
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = (*stack)->next;
 	tmp->prev = *stack;
-	(*stack)->next = tmp;;
+	(*stack)->next = tmp;
 	(*stack)->prev = NULL;
 }
 

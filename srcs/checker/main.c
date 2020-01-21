@@ -6,13 +6,13 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:09:19 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/20 10:54:26 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:45:47 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_a(t_lstnum **a)
+static int	check_a(t_lstnum **a)
 {
 	t_lstnum *tmp;
 
@@ -26,31 +26,61 @@ int	check_a(t_lstnum **a)
 	return (1);
 }
 
-int	main(int ac, char **av)
+static void	treat_input(t_stack *a, t_stack *b, char *line)
+{
+	while (get_next_line(0, &line) > 0)
+	{
+		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb")
+			|| !ft_strcmp(line, "ss"))
+			swapper(a, b, line);
+		else if (!ft_strcmp(line, "pa"))
+			push(&b->head, &a->head, &a->end);
+		else if (!ft_strcmp(line, "pb"))
+			push(&a->head, &b->head, &b->end);
+		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb")
+					|| !ft_strcmp(line, "rr"))
+			rotater(a, b, line);
+		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb")
+					|| !ft_strcmp(line, "rrr"))
+			reverse_rotater(a, b, line);
+		else
+			ft_error();
+		free(line);
+	}
+}
+
+int			main(int ac, char **av)
 {
 	t_stack	a;
 	t_stack	b;
 	char	*line;
-	
+
+	line = NULL;
 	if (ac < 2)
 		return (0);
 	build_stack(&a, &b, ac, av);
+	treat_input(&a, &b, line);
+	/*
 	while (get_next_line(0, &line) > 0)
 	{
-		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb") || !ft_strcmp(line, "ss"))
+		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb")
+			|| !ft_strcmp(line, "ss"))
 			swapper(&a, &b, line);
 		else if (!ft_strcmp(line, "pa"))
 			push(&b.head, &a.head, &a.end);
 		else if (!ft_strcmp(line, "pb"))
 			push(&a.head, &b.head, &b.end);
-		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
+		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb")
+					|| !ft_strcmp(line, "rr"))
 			rotater(&a, &b, line);
-		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
+		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb")
+					|| !ft_strcmp(line, "rrr"))
 			reverse_rotater(&a, &b, line);
 		else
 			ft_error();
 		free(line);
 	}
+	*/
 	if (check_a(&a.head) == 1 && !b.head)
 		ft_printf("OK\n");
 	else
