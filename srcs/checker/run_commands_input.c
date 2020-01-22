@@ -3,16 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   run_commands_input.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:40:05 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/11 12:37:17 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/01/22 12:27:34 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swapper(t_stack *a, t_stack *b, char *line)
+void	print_stacks(t_lstnum *a, t_lstnum *b)
+{
+	t_lstnum	*tmp;
+
+	tmp = a;
+	ft_printf("a: ");
+	while (tmp)
+	{
+		ft_printf("%i, ", tmp->n);
+		tmp = tmp->next;
+	}
+	tmp = b;
+	ft_printf("\nb: ");
+	while (tmp)
+	{
+		ft_printf("%i, ", tmp->n);
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
+}
+
+void	swapper(t_stack *a, t_stack *b, char *line, int *flag)
 {
 	if (!ft_strcmp(line, "sa"))
 		swap(&a->head);
@@ -23,9 +44,11 @@ void	swapper(t_stack *a, t_stack *b, char *line)
 		swap(&a->head);
 		swap(&b->head);
 	}
+	if (*flag == 2)
+		print_stacks(a->head, b->head);
 }
 
-void	rotater(t_stack *a, t_stack *b, char *line)
+void	rotater(t_stack *a, t_stack *b, char *line, int *flag)
 {
 	if (!ft_strcmp(line, "ra"))
 		ft_rotate(&a->head, &a->end);
@@ -36,9 +59,11 @@ void	rotater(t_stack *a, t_stack *b, char *line)
 		ft_rotate(&a->head, &a->end);
 		ft_rotate(&b->head, &b->end);
 	}
+	if (*flag == 2)
+		print_stacks(a->head, b->head);
 }
 
-void	reverse_rotater(t_stack *a, t_stack *b, char *line)
+void	reverse_rotater(t_stack *a, t_stack *b, char *line, int *flag)
 {
 	if (!ft_strcmp(line, "rra"))
 		ft_reverse_rotate(&a->head, &a->end);
@@ -49,4 +74,6 @@ void	reverse_rotater(t_stack *a, t_stack *b, char *line)
 		ft_reverse_rotate(&a->head, &a->end);
 		ft_reverse_rotate(&b->head, &b->end);
 	}
+	if (*flag == 2)
+		print_stacks(a->head, b->head);
 }

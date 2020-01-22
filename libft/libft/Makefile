@@ -6,7 +6,7 @@
 #    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 11:46:39 by hopham            #+#    #+#              #
-#    Updated: 2020/01/17 14:05:52 by hopham           ###   ########.fr        #
+#    Updated: 2020/01/22 14:27:40 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 SRC = ./srcs/
 
 FUNCTIONS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_strupcase.c ft_isupper.c \
-		ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
+		ft_atoill.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 		ft_itoa.c ft_lstadd.c ft_isblank.c ft_strrev.c ft_islower.c \
 	 ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c \
 	 ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c \

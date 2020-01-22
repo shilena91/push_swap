@@ -6,7 +6,7 @@
 #    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 10:56:43 by hopham            #+#    #+#              #
-#    Updated: 2020/01/20 15:57:22 by hopham           ###   ########.fr        #
+#    Updated: 2020/01/22 11:42:52 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ SRCS_P = ./srcs/push_swap/
 
 SHARE_FOLDER = ./srcs/shared_functions/
 
-FUNC_C = main.c run_commands_input.c
-FUNC_P = main.c get_median.c solver.c a_functions.c b_functions.c 
+FUNC_C = main_checker.c run_commands_input.c
+FUNC_P = main_ps.c get_median.c solver.c a_functions.c b_functions.c 
 SHARE_FUNCS = build.c run_commands.c parse_nb_from_str.c
 
 SHARE_FILES = $(addprefix $(SHARE_FOLDER), $(SHARE_FUNCS))

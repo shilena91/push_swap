@@ -9,8 +9,8 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "${workspaceFolder}/push_swap",
-			"args": ["2 0 1"],
+			"program": "${workspaceFolder}/checker",
+			"args": ["2147483648"],
 			"cwd": "${workspaceFolder}"
 		}
 	]

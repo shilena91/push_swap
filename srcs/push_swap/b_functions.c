@@ -6,13 +6,13 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:26:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/21 16:10:20 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 17:28:11 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		get_special_median_b(t_stack *b)
+int			get_special_median_b(t_stack *b)
 {
 	t_lstnum	*tmp;
 	int			i;
@@ -32,7 +32,7 @@ int		get_special_median_b(t_stack *b)
 	return (arr[2]);
 }
 
-int		deal_lower_nb_b(t_stack *b, char *solution, int med, int *rewind)
+static int	deal_lower_nb_b(t_stack *b, char *solution, int med, int *rewind)
 {
 	t_lstnum	*tmp;
 	int			i;
@@ -56,7 +56,7 @@ int		deal_lower_nb_b(t_stack *b, char *solution, int med, int *rewind)
 	return (1);
 }
 
-void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution)
+void		split_from_med_b(t_stack *a, t_stack *b, int med, char *solut)
 {
 	int	rewind;
 
@@ -66,20 +66,20 @@ void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution)
 		if (b->head->n > med)
 		{
 			push(&b->head, &a->head, &a->end);
-			ft_strcat(solution, "pa\n");
+			ft_strcat(solut, "pa\n");
 		}
-		else if (deal_lower_nb_b(b, solution, med, &rewind) == 0)
+		else if (deal_lower_nb_b(b, solut, med, &rewind) == 0)
 			break ;
 	}
 	while (b->p[b->top] && rewind > 0)
 	{
 		ft_reverse_rotate(&b->head, &b->end);
-		ft_strcat(solution, "rrb\n");
+		ft_strcat(solut, "rrb\n");
 		rewind--;
 	}
 }
 
-void	three_case_nb_b(t_stack *b, char *tmp)
+static void	three_case_nb_b(t_stack *b, char *tmp)
 {
 	while (!(b->head->next->n > b->head->next->next->n
 			&& b->head->n > b->head->next->next->n))
@@ -102,7 +102,7 @@ void	three_case_nb_b(t_stack *b, char *tmp)
 	ft_strcat(tmp, "sb\n");
 }
 
-void	sort_b(t_stack *b, int count, char *tmp)
+void		sort_b(t_stack *b, int count, char *tmp)
 {
 	if (b->top)
 		b->top--;

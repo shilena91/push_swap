@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 19:30:11 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/22 14:26:43 by hopham           ###   ########.fr       */
+/*   Created: 2020/01/22 14:25:31 by hopham            #+#    #+#             */
+/*   Updated: 2020/01/22 14:28:50 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_atoi(const char *str)
+long long	ft_atoill(const char *str)
 {
 	int					i;
 	unsigned long long	nb;
@@ -33,8 +31,6 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
-	if (nb > 9223372036854775807)
-		return (p == -1) ? 0 : -1;
 	nb = nb * p;
-	return ((int)nb);
+	return (nb);
 }

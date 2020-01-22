@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/20 15:57:01 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 17:27:28 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct	s_lstnum
 {
-	int				n;
+	long			n;
 	struct s_lstnum	*next;
 	struct s_lstnum	*prev;
 }				t_lstnum;
@@ -34,27 +34,28 @@ typedef struct	s_stack
 	int			ac;
 }				t_stack;
 
-void	parse_nb_from_first_str(t_stack *a, char *str);
-void	parse_nb_from_second_str(t_stack *a, char *str);
+void			parse_nb_from_first_str(t_stack *a, char *str);
+void			parse_nb_from_second_str(t_stack *a, char *str);
+void			print_stacks(t_lstnum *a, t_lstnum *b);
 
-void	ft_error(void);
-void	build_stack(t_stack *a, t_stack *b, int ac, char **av);
-void	swapper(t_stack *a, t_stack *b, char *line);
-void	swap(t_lstnum **stack);
-void	push(t_lstnum **from, t_lstnum **to, t_lstnum **to_end);
-void	ft_rotate(t_lstnum **head, t_lstnum **end);
-void	rotater(t_stack *a, t_stack *b, char *line);
-void	ft_reverse_rotate(t_lstnum **head, t_lstnum **end);
-void	reverse_rotater(t_stack *a, t_stack *b, char *line);
+void			ft_error(void);
+void			build_stack(t_stack *a, int ac, char **av, int flag);
+void			swapper(t_stack *a, t_stack *b, char *line, int *flag);
+void			swap(t_lstnum **stack);
+void			push(t_lstnum **from, t_lstnum **to, t_lstnum **to_end);
+void			ft_rotate(t_lstnum **head, t_lstnum **end);
+void			rotater(t_stack *a, t_stack *b, char *line, int *flag);
+void			ft_reverse_rotate(t_lstnum **head, t_lstnum **end);
+void			reverse_rotater(t_stack *a, t_stack *b, char *line, int *flag);
 
-t_list	*solve(t_stack *a, t_stack *b);
-int		get_count(t_stack *stack);
-int		get_true_median(t_stack *a);
-void	split_around_median_a(t_stack *a, t_stack *b, int med, char *solution);
-int		get_special_median_a(t_stack *a);
-void	sort_a(t_stack *a, int count, char *solution);
-int		get_special_median_b(t_stack *b);
-void	split_around_median_b(t_stack *a, t_stack *b, int med, char *solution);
-void	sort_b(t_stack *b, int count, char *tmp);
+t_list			*solve(t_stack *a, t_stack *b);
+int				get_count(t_stack *stack);
+int				get_true_median(t_stack *a);
+void			split_from_med_a(t_stack *a, t_stack *b, int med, char *solut);
+int				get_special_median_a(t_stack *a);
+void			sort_a(t_stack *a, int count, char *solution);
+int				get_special_median_b(t_stack *b);
+void			split_from_med_b(t_stack *a, t_stack *b, int med, char *solut);
+void			sort_b(t_stack *b, int count, char *tmp);
 
 #endif

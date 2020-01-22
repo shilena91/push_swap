@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_ps.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:05:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/21 18:24:54 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 13:35:27 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ int			main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	build_stack(&a, &b, ac, av);
+	build_stack(&a, ac, av, 0);
+	b.head = NULL;
+	b.end = NULL;
 	count = count_numbers(&a);
 	if (!(a.p = malloc(sizeof(t_lstnum*) * count)) ||
 	!(b.p = malloc(sizeof(t_lstnum*) * count)))

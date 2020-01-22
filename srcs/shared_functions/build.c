@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 14:29:02 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/21 18:32:45 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 13:38:17 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,20 @@ static int		check_double(t_stack *a)
 	return (1);
 }
 
-void			build_stack(t_stack *a, t_stack *b, int ac, char **av)
+void			build_stack(t_stack *a, int ac, char **av, int flag)
 {
 	int	i;
 
-	a->head = ft_memalloc(sizeof(t_lstnum));
-	parse_nb_from_first_str(a, av[1]);
 	i = 2;
+	a->head = ft_memalloc(sizeof(t_lstnum));
+	if (flag)
+	{
+		parse_nb_from_first_str(a, av[0]);
+		ac--;
+		i = 1;
+	}
+	else
+		parse_nb_from_first_str(a, av[1]);
 	while (i < ac)
 	{
 		parse_nb_from_second_str(a, av[i]);
@@ -54,6 +61,4 @@ void			build_stack(t_stack *a, t_stack *b, int ac, char **av)
 	}
 	if (!(check_double(a)))
 		ft_error();
-	b->head = NULL;
-	b->end = NULL;
 }

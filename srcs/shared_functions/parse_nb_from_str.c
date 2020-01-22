@@ -6,18 +6,18 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:55:44 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/20 17:51:47 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 14:32:27 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_lstnum	*add_num_to_struct(int num)
+static t_lstnum	*add_num_to_struct(long long num)
 {
 	t_lstnum	*new_num;
 
 	if (num > INT_MAX || num < INT_MIN)
-		return (NULL);
+		ft_error();
 	new_num = (t_lstnum*)ft_memalloc(sizeof(t_lstnum));
 	new_num->n = num;
 	new_num->next = NULL;
@@ -56,7 +56,7 @@ static void		add_nb_to_list(t_stack *s, t_lstnum *new_num, char *str, int *i)
 		if ((str[*i] == '-' || str[*i] == '+')
 			&& !ft_isdigit(str[*i + 1]) && str[*i + 1] != '\0')
 			ft_error();
-		new_num = add_num_to_struct(ft_atoi(&str[*i]));
+		new_num = add_num_to_struct(ft_atoill(&str[*i]));
 		lst_addend(&s->end, new_num);
 		if (str[*i] == '-' || str[*i] == '+')
 			(*i)++;
@@ -74,13 +74,15 @@ void			parse_nb_from_first_str(t_stack *a, char *str)
 
 	new_num = NULL;
 	i = 0;
-	if (!str[i])
+	if (!str)
 		return ;
 	while (ft_isblank(str[i]))
 		i++;
 	if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
 		ft_error();
-	a->head->n = ft_atoi(&str[i]);
+	a->head->n = ft_atoill(&str[i]);
+	if (a->head->n > INT_MAX || a->head->n < INT_MIN)
+		ft_error();
 	a->end = a->head;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -98,7 +100,7 @@ void			parse_nb_from_second_str(t_stack *a, char *str)
 
 	new_num = NULL;
 	i = 0;
-	if (!str[i])
+	if (!str)
 		return ;
 	add_nb_to_list(a, new_num, str, &i);
 }

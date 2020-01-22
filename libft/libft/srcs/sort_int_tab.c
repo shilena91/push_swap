@@ -6,14 +6,14 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:53:11 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/14 18:09:36 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 17:24:44 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	sort_int_tab(int *tab, unsigned int size)
 {
-	unsigned int i;
-	int tmp;
+	unsigned int	i;
+	int				tmp;
 
 	i = 0;
 	size--;

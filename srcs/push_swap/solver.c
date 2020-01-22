@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:11 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/21 17:29:25 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 17:29:05 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		split_a_to_b(t_stack *a, t_stack *b, t_list **solution)
 	else if (count > 2 && count <= 11)
 		median = get_special_median_a(a);
 	if (median != NO_MED)
-		split_around_median_a(a, b, (int)median, tmp);
+		split_from_med_a(a, b, (int)median, tmp);
 	else
 		sort_a(a, count, tmp);
 	if (tmp[0])
@@ -82,7 +82,7 @@ void	b_to_a(t_stack *a, t_stack *b, t_list **solution)
 	else if (count > 2 && count <= 6)
 		median = get_special_median_b(b);
 	if (median != NO_MED)
-		split_around_median_b(a, b, (int)median, tmp);
+		split_from_med_b(a, b, (int)median, tmp);
 	else
 		sort_b(b, count, tmp);
 	if (median == NO_MED)
