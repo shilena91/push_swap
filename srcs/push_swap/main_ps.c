@@ -6,28 +6,35 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:05:21 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/22 13:35:27 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 18:22:13 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_all(t_stack *a, t_list *solution)
+static void	print_and_free(t_stack *a, t_list *solution)
 {
 	t_lstnum	*tmp;
 	t_list		*tmp_solution;
+	t_list		*tmp2;
 
+	tmp_solution = solution;
+	while (solution)
+	{
+		ft_putstr((char*)solution->content);
+		solution = solution->next;
+	}
 	while (a->head)
 	{
 		tmp = a->head;
 		a->head = a->head->next;
 		free(tmp);
 	}
-	while (solution)
+	while (tmp_solution)
 	{
-		tmp_solution = solution;
-		solution = solution->next;
-		ft_memdel((void**)solution);
+		tmp2 = tmp_solution;
+		tmp_solution = tmp_solution->next;
+		ft_memdel((void**)tmp_solution);
 	}
 }
 
@@ -46,21 +53,11 @@ static int	count_numbers(t_stack *a)
 	return (i);
 }
 
-static void	print_solution(t_list *solution)
-{
-	while (solution)
-	{
-		ft_putstr((char*)solution->content);
-		solution = solution->next;
-	}
-}
-
 int			main(int ac, char **av)
 {
 	t_stack a;
 	t_stack	b;
 	t_list	*solution;
-	t_list	*tmp;
 	int		count;
 
 	if (ac < 2)
@@ -79,7 +76,6 @@ int			main(int ac, char **av)
 	a.p[a.top] = NULL;
 	b.p[a.top] = NULL;
 	solution = solve(&a, &b);
-	tmp = solution;
-	print_solution(solution);
-	free_all(&a, tmp);
+	print_and_free(&a, solution);
+	return (0);
 }
