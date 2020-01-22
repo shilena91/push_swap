@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:40:05 by hopham            #+#    #+#             */
-/*   Updated: 2020/01/22 12:27:34 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 18:01:46 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	print_stacks(t_lstnum *a, t_lstnum *b)
 	t_lstnum	*tmp;
 
 	tmp = a;
+	ft_printf(BBLUE);
 	ft_printf("a: ");
 	while (tmp)
 	{
@@ -24,6 +25,7 @@ void	print_stacks(t_lstnum *a, t_lstnum *b)
 		tmp = tmp->next;
 	}
 	tmp = b;
+	ft_printf(BRED);
 	ft_printf("\nb: ");
 	while (tmp)
 	{
@@ -31,6 +33,7 @@ void	print_stacks(t_lstnum *a, t_lstnum *b)
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
+	ft_printf(DEFAULT);
 }
 
 void	swapper(t_stack *a, t_stack *b, char *line, int *flag)

@@ -6,13 +6,16 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:12:02 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/01/22 17:27:28 by hopham           ###   ########.fr       */
+/*   Updated: 2020/01/22 18:01:33 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # define NO_MED 2147483648
+# define BRED "\033[1;31m"
+# define BBLUE "\033[1;34m"
+# define DEFAULT "\033[0m"
 
 # include "libft.h"
 # include "ft_printf.h"
