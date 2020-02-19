@@ -30,19 +30,19 @@ You can check full subject's detail [here](https://github.com/shilena91/push_swa
 I tried all sorting algorithm and realized that all of them worked, just giving different complexities. You can use different algorithm for different amount of intergers in order to give the least amount of commands, but the code would be much complex. I decided to use only one algorithm for this project, so my code could be clean and easy to modifiy in the future. In this case, quick-sort algorithm is the best choice.\
 In my implementation, I reapeatly split stack A around medians, putting low numbers into stack B, and keep high numbers in stack A.
 
-Start
+**Start**
 
 Stack A: 1 7 9 4 10 3 2 11 25 30 (median = 9)\
 Stack B:
 
-After split:
+**After split:**
 
-Stack A: 11 25 30 10
+Stack A: 11 25 30 10\
 Stack B: 2 3 4 9 7 1
 
-Second split:
+**Second split:**
 
-Stack A: 11 25 30
+Stack A: 11 25 30\
 Stack B: 10 2 3 4 9 7 1
 
 Once stack A was reduced to three or less numbers, it was sorted. Now I have 1 partition in stack A, I will set that as ```a->top```. I would then find median in stack B and push higher numbers back to stack A as next partition.
