@@ -45,7 +45,7 @@ Stack B: 2 3 4 9 7 1
 Stack A: 11 25 30\
 Stack B: 10 2 3 4 9 7 1
 
-Once stack A was reduced to three or less numbers, it was sorted. Now I have 1 partition in stack A, I will set that as ```a->top```. I would then find median in stack B and push higher numbers back to stack A as next partition.
+Once stack A is reduced to three or less numbers, then stack A is sorted. Now I have 1 partition in stack A, I will set that as ```a->top```. I would then find median in stack B and push higher numbers back to stack A as next partition.
 
 If three or less numbers were pushed back on to stack A, these numbers would be sorted using the swap and rotate commands, and a partition would be marked at the end of stack A too, signalling that stack A is sorted until this point. Stack B would then push onto A again as above.
 
