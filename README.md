@@ -30,7 +30,7 @@ You can check full subject's detail [here](https://github.com/shilena91/push_swa
 I tried all sorting algorithm and realized that all of them worked, just giving different complexities. You can use different algorithm for different amount of intergers in order to give the least amount of commands, but the code would be much complex. I decided to use only one algorithm for this project, so my code could be clean and easy to modifiy in the future. In this case, quick-sort algorithm is the best choice.\
 In my implementation, I reapeatly split stack A around medians, putting low numbers into stack B, and keep high numbers in stack A.
 
-**Start**
+**Start:**
 
 Stack A: 1 7 9 4 10 3 2 11 25 30 (median = 9)\
 Stack B:
